@@ -111,8 +111,8 @@ const images = () => {
         
     }
 
-    const cmd = (done) => {
-        exec('git add -A && git commit -m "upd" && git push origin main', (error, stdout, stderr) => {
+    const cmd = () => {
+        return exec('git add -A && git commit -m "upd" && git push origin main', (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
@@ -122,7 +122,6 @@ const images = () => {
                 return;
             }
             console.log(`stdout: ${stdout}`);
-            return src('gulpfile.js').pipe(dest('dist/build'))
         });
     }
     
@@ -144,4 +143,4 @@ exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
- //какой то нелепый коментарий 4
+ //какой то красивый и крутой коментарий
