@@ -14,7 +14,8 @@ const gulpif = require('gulp-if')
 const argv = require('yargs').argv
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync').create()
-const uglify = require('gulp-uglify-es').default
+const uglify = require('gulp-uglify-es').default;
+const { exit } = require('process');
 
 const clean = () => {
     if (argv.prod) {
@@ -123,6 +124,7 @@ const images = () => {
             }
             console.log(`stdout: ${stdout}`);
             done()
+            process.exit()
         })
     }
     
@@ -144,4 +146,4 @@ exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
- //какой то красивый и крутой коментарий
+ //какой  коментарий
