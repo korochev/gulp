@@ -112,7 +112,7 @@ const images = () => {
     }
 
     const cmd = (done) => {
-        exec('rm -r .git', (error, stdout, stderr) => {
+        exec('git add -A && git commit -m "upd" && git push origin main', (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
@@ -144,4 +144,4 @@ exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
- //какой то нелепый коментарий
+ //какой то нелепый коментарий 2
