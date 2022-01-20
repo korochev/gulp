@@ -116,7 +116,7 @@ const images = () => {
         watch('src/resources/**', resources)
     }
 
-const tasks = [resources, scripts, styles, images, svgSprites]
+const tasks = [clean, resources, scripts, styles, images, svgSprites]
 if(!argv.prod)tasks.push(watchFiles);else tasks.push(gh)
 exports.styles = styles
 exports.clean = clean
