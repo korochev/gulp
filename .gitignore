@@ -3,8 +3,8 @@
 Thumbs.db
 
 # Файлы редактора
-.vscode
 note.txt
+.vscode
 
 # Вспомогательные файлы
 *.log*
