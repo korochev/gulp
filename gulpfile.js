@@ -1,7 +1,6 @@
 const { src, dest, series, watch } = require('gulp')
 const { exec } = require("child_process");
 const concat = require('gulp-concat')
-const htmlMin = require('gulp-htmlmin')
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCSS = require('gulp-clean-css')
 const svgSprite = require('gulp-svg-sprite')
@@ -56,15 +55,6 @@ const scripts = () => {
         .pipe(concat('app.js'))
         .pipe(gulpif(argv.prod, uglify({toplevel: true}).on('error', notify.onError())))
         .pipe(gulpif(!argv.prod, sourcemaps.write()))
-        .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
-        .pipe(browserSync.stream())
-}
-
-const htmlMinify = () => {
-    return src('src/**/*.html')
-        .pipe(htmlMin({
-            collapseWhitespace:true,
-        }))
         .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
         .pipe(browserSync.stream())
 }
@@ -126,12 +116,11 @@ const images = () => {
         watch('src/resources/**', resources)
     }
 
-const tasks = [resources, htmlMinify, scripts, styles, images, svgSprites]
+const tasks = [resources, scripts, styles, images, svgSprites]
 if(!argv.prod)tasks.push(watchFiles);else tasks.push(gh)
 exports.styles = styles
 exports.clean = clean
 exports.scripts = scripts
-exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
