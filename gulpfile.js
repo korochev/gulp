@@ -113,17 +113,7 @@ const images = () => {
     }
 
     const cmd = () => {
-        return exec('git add -A && git commit -m "upd" && git push origin main', (error, stdout, stderr) => {
-            if (error) {
-                console.log(`error: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);     
-        })
+        return exec('git add -A && git commit -m "upd" && git push origin main')
     }
     
     if(!argv.prod) {
