@@ -15,6 +15,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync').create()
 const uglify = require('gulp-uglify-es').default;
 const ghPages = require('gulp-gh-pages');
+const rigger = require('gulp-rigger');
 
 const clean = () => {
     if (argv.prod) {
@@ -26,11 +27,15 @@ const clean = () => {
 }
 
 const resources = () => {
-    return src([
-            'src/index.html',
-            'src/resources/**' 
-        ])
+    return src('src/resources/**')
         .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
+}
+
+const docs = () => {
+    return src('src/**/*.html')
+        .pipe(rigger())
+        .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
+        .pipe(browserSync.stream())
 }
 
 const styles = () => {
@@ -113,12 +118,13 @@ const images = () => {
     
     if(!argv.prod) {
         watch('src/styles/**/*.css', styles)
+        watch('src/**/*.html', docs)
         watch('src/images/svg/**/*.svg', svgSprites)
         watch('src/js/**/*.js', scripts)
         watch('src/resources/**', resources)
     }
 
-const tasks = [clean, resources, scripts, styles, images, svgSprites]
+const tasks = [clean, resources, docs, scripts, styles, images, svgSprites]
 if(!argv.prod)tasks.push(watchFiles);else tasks.push(gh)
 exports.styles = styles
 exports.clean = clean

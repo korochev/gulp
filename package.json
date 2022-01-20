@@ -30,5 +30,8 @@
     "gulp-uglify-es": "^3.0.0",
     "gulp-webp": "^4.0.1",
     "yargs": "^17.3.1"
+  },
+  "dependencies": {
+    "gulp-rigger": "^0.5.8"
   }
 }
