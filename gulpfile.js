@@ -123,9 +123,10 @@ const images = () => {
                 return;
             }
             console.log(`stdout: ${stdout}`);
-            done()
-            process.exit()
+            
         })
+        done()
+        process.exit()
     }
     
     if(!argv.prod) {
