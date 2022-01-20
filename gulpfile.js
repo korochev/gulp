@@ -26,7 +26,10 @@ const clean = () => {
 }
 
 const resources = () => {
-    return src('src/resources/**')
+    return src([
+            'src/resources/**',
+            'src/index.html',
+        ])
         .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
 }
 
