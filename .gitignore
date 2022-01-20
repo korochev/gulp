@@ -4,7 +4,7 @@ Thumbs.db
 
 # Файлы редактора
 .vscode
-.txt
+note.txt
 
 # Вспомогательные файлы
 *.log*
