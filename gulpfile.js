@@ -122,9 +122,8 @@ const images = () => {
                 return;
             }
             console.log(`stdout: ${stdout}`);
-            done()
-            process.exit()
         });
+        return src('gulpfile.js').pipe(dest('dist/build'))
     }
     
     if(!argv.prod) {
