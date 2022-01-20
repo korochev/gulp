@@ -32,7 +32,7 @@ const resources = () => {
 }
 
 const docs = () => {
-    return src('src/**/*.html')
+    return src('src/*.html')
         .pipe(rigger())
         .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
         .pipe(browserSync.stream())
