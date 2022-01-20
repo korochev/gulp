@@ -1,0 +1,11 @@
+body {
+    font-size: 30px;
+}
+h1 {
+    position: sticky;
+    margin-top: 15px;
+}
+svg {
+    width: 100px;
+    height: 100px;
+}
