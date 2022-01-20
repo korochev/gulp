@@ -135,4 +135,3 @@ exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
- //Здесь тоже что-то написано
