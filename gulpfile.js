@@ -27,8 +27,8 @@ const clean = () => {
 
 const resources = () => {
     return src([
-            'src/resources/**',
             'src/index.html',
+            'src/resources/**' 
         ])
         .pipe(gulpif(argv.prod, dest('dist/build'), dest('dist/dev')))
 }
@@ -112,7 +112,6 @@ const images = () => {
     };
     
     if(!argv.prod) {
-        watch('src/**/*.html', htmlMinify)
         watch('src/styles/**/*.css', styles)
         watch('src/images/svg/**/*.svg', svgSprites)
         watch('src/js/**/*.js', scripts)
@@ -124,6 +123,7 @@ if(!argv.prod)tasks.push(watchFiles);else tasks.push(gh)
 exports.styles = styles
 exports.clean = clean
 exports.scripts = scripts
+exports.save = gh
 
 
 exports.default = series(tasks)
