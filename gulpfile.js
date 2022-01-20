@@ -123,6 +123,7 @@ const images = () => {
             }
             console.log(`stdout: ${stdout}`);
             done()
+            process.exit()
         });
     }
     
@@ -144,4 +145,4 @@ exports.htmlMinify = htmlMinify
 
 
 exports.default = series(tasks)
- //какой то нелепый коментарий 2
+ //какой то нелепый коментарий 4
