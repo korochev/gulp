@@ -11,3 +11,4 @@ node_modules/
 
 # Папка с собранными файлами проекта
 dist/
+.publish
