@@ -112,7 +112,7 @@ const images = () => {
 
     const gh = () => {
         exec('git add -A && git commit -m "upd" && git push origin main')
-        return src('.build/**/*')
+        return src('build/**/*')
             .pipe(ghPages());
     };
     
